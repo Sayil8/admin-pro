@@ -20,7 +20,7 @@ import { ServicioModule } from './servicios/servicio.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
