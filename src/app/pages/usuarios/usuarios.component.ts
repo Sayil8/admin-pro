@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/servicios/servicio.index';
-import _swal from 'sweetalert';
-import { ModalUploadService } from 'src/app/componentes/modal-upload/modal-upload.service';
 
+import { ModalUploadService } from 'src/app/componentes/modal-upload/modal-upload.service';
+import _swal from 'sweetalert';
 declare var swal: any;
 @Component({
   selector: 'app-usuarios',
