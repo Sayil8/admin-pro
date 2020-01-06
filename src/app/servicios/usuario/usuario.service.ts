@@ -26,13 +26,32 @@ export class UsuarioService {
     this.cargarStorage();
   }
 
+  renuevaToken(){
+    let url = URL_SERVICIOS + '/login/renuevatoken';
+    url += '?token=' + this.token;
+
+    return this.http.get(url)
+        .map( (resp: any) => {
+
+            this.token = resp.token;
+            localStorage.setItem('token', this.token);
+            return true;
+
+        })
+        .catch( err => {
+          this.router.navigate(['/login']);
+          _swal(err.error.mensaje, 'No fue posible renovar token', 'error');
+          return throwError(err.message);
+        })
+  }
+
 
   estaLogeado(){
     return (this.token.length > 5) ? true : false;
   }
 
   cargarStorage(){
-    if(localStorage.getItem('token')){
+    if (localStorage.getItem('token')){
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
       this.menu = JSON.parse(localStorage.getItem('menu'));
@@ -85,7 +104,7 @@ export class UsuarioService {
 
     let url = URL_SERVICIOS + '/login';
 
-    if(recordar){
+    if (recordar){
       localStorage.setItem('email', usuario.email);
     }else{
       localStorage.removeItem('email');
@@ -128,7 +147,7 @@ export class UsuarioService {
     return this.http.put(url, usuario)
             .map((resp: any) => {
 
-                if(usuario._id === this.usuario._id){
+                if (usuario._id === this.usuario._id){
                     this.guardarStorage(resp.usuario._id, this.token, resp.usuario, this.menu );
                 }
 
@@ -147,13 +166,13 @@ export class UsuarioService {
 
   cambiarImagen(archivo: File, id: string){
       this.subirAchivoService.subirArchivo(archivo, 'usuarios', id)
-        .then((resp:any) => {
+        .then((resp: any) => {
           this.usuario.img = resp.usuario.img;
           _swal('Imagen actualizado', this.usuario.nombre, 'success');
 
           this.guardarStorage(id, this.token, this.usuario, this.menu);
         })
-        .catch(resp =>{
+        .catch(resp => {
           console.log(resp);
         });
   }

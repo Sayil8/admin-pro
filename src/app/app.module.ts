@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServicioModule } from './servicios/servicio.module';
+import { PagesComponent } from './pages/pages.component';
+import { SharedModule } from './shared/shares.module';
 
 
 
@@ -20,16 +22,17 @@ import { ServicioModule } from './servicios/servicio.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PageModule,
     APP_ROUTES,
     FormsModule,
     ReactiveFormsModule,
-    ServicioModule
+    ServicioModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

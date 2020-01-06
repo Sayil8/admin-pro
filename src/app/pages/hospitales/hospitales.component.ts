@@ -31,7 +31,7 @@ export class HospitalesComponent implements OnInit {
     });
   }
 
-  crearHospital(nombre: string){
+  crearHospital(){
 
     swal({
       title: 'Crear Hospital',
