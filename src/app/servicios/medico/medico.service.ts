@@ -34,10 +34,9 @@ export class MedicoService {
 
     return this.Http.get(url)
           .map ( (resp: any) => {
-            return resp.medicos;
+            return resp.medico;
           });
   }
-
 
   buscarMedico(termino: string) {
 

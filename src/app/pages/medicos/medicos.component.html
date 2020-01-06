@@ -41,8 +41,8 @@
                     <thead>
                         <tr>
                             <th>Imagen</th>
-                            <th>Hospital</th>
                             <th>Nombre del medico</th>
+                            <th>Hospital</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -56,7 +56,7 @@
                                 {{medico.nombre}}
                             </td>
                             <td>
-                                {{medico.hospital}}
+                                {{medico.hospital.nombre}}
                             </td>
                             <td>
                                 <button [routerLink]="['/medico', medico._id]" class="btn btn-primary">

@@ -26,11 +26,13 @@ export class MedicoComponent implements OnInit {
                 activatedRoute.params.subscribe( params => {
 
 
+                  // tslint:disable-next-line: no-string-literal
                   let id = params['id'];
 
                   if(id !== 'nuevo'){
                     this.cargarMedico(id);
                   }
+
                 });
                }
 
@@ -75,7 +77,7 @@ export class MedicoComponent implements OnInit {
           this.medico = medico;
           this.medico.hospital = medico.hospital._id;
           this.cambioHospital(this.medico.hospital);
-        })
+        });
   }
 
   cambiarFoto(){
